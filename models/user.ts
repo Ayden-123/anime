@@ -9,7 +9,7 @@ export async function insertUser(user: User) {
         VALUES 
         ($1, $2, $3, $4, $5)
     `,
-        [user.email, user.nickname, user.avatarUrl, createdAt, user.id]
+        [user.email, user.nickname, user.avatarUrl, createdAt, user.userId]
     );
     return res;
 }
