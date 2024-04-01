@@ -18,6 +18,7 @@ export async function insertUser(user: User) {
         `,
             [user.clerkId, user.email, user.nickname, user.avatarUrl, createAt, user.userId]
         );
+        console.log('insert完成')
         console.log('result', results); // 结果集
         console.log('fields', fields); // 额外的元数据（如果有的话）
 
