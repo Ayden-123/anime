@@ -70,19 +70,28 @@ export async function POST(req: Request) {
         userId: userId,
     };
 
-    // const newUser = await createUser(user);
-    const newUser = await insertUser(user);
+    await insertUser(user)
+
+    // const uri = "/api/mysql/addUser"
+    // // const params = { user }
+    // const resp = await fetch(uri, {
+    //   method: "POST",
+    //   body: JSON.stringify(user),
+    // })
+    // console.log('resp', resp);
+    
+    
 
     // Set public metadata
-    if (newUser) {
-      await clerkClient.users.updateUserMetadata(id, {
-        publicMetadata: {
-          userId: userId,
-        },
-      });
-    }
+    // if (newUser) {
+    //   await clerkClient.users.updateUserMetadata(id, {
+    //     publicMetadata: {
+    //       userId: userId,
+    //     },
+    //   });
+    // }
 
-    return NextResponse.json({ message: "OK", user: newUser });
+    return NextResponse.json({ message: "OK", user: user });
   }
 
 //   // UPDATE
