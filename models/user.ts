@@ -22,7 +22,7 @@ export async function insertUser(user: User) {
         console.log('fields', fields); // 额外的元数据（如果有的话）
 
     } catch (error) {
-        console.log('insertUser遇到错误了')
+        console.log('insertUser遇到错误了', error)
     }
 
     
