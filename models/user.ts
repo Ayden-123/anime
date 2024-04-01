@@ -11,10 +11,10 @@ export async function insertUser(user: User) {
         const createdAt: string = new Date().toISOString();
         
         const [results, fields] = await db.query(
-            `INSERT INTO users 
+            `INSERT INTO user 
             (clearId, email, nickname, avatarUrl, createdAt, userId) 
             VALUES 
-            ($1, $2, $3, $4, $5)
+            ($1, $2, $3, $4, $5, $6)
         `,
             [user.clerkId, user.email, user.nickname, user.avatarUrl, createdAt, user.userId]
         );
