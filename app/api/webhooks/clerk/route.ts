@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { Webhook } from "svix";
 import { getUuid } from "@/lib";
 
-import { insertUser } from "@/models/user"
+import { insertUser, updateUser, deleteUser } from "@/models/user"
 
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
@@ -65,62 +65,50 @@ export async function POST(req: Request) {
     const user: User = {
         clerkId: id,
         email: email_addresses[0].email_address,
-        nickname: username!,
+        username: username!,
         avatarUrl: image_url,
         userId: userId,
     };
 
-    await insertUser(user)
-
-    // const uri = "/api/mysql/addUser"
-    // // const params = { user }
-    // const resp = await fetch(uri, {
-    //   method: "POST",
-    //   body: JSON.stringify(user),
-    // })
-    // console.log('resp', resp);
-    
-    
+    const flag = await insertUser(user)
 
     // Set public metadata
-    // if (newUser) {
-    //   await clerkClient.users.updateUserMetadata(id, {
-    //     publicMetadata: {
-    //       userId: userId,
-    //     },
-    //   });
-    // }
+    if (flag) {
+      await clerkClient.users.updateUserMetadata(id, {
+        publicMetadata: {
+          userId: userId,
+        },
+      });
+    }
 
     return NextResponse.json({ message: "OK", user: user });
   }
 
-//   // UPDATE
-//   if (eventType === "user.updated") {
-//     const { id, image_url, first_name, last_name, username } = evt.data;
+  // UPDATE
+  if (eventType === "user.updated") {
+    const { id, image_url, first_name, last_name, username } = evt.data;
 
-//     const user = {
-//       firstName: first_name,
-//       lastName: last_name,
-//       username: username!,
-//       photo: image_url,
-//     };
+    const user: User = {
+      username: username!,
+      avatarUrl: image_url,
+    };
 
-//     const updatedUser = await updateUser(id, user);
+    const flag = await updateUser(id, user);
 
-//     return NextResponse.json({ message: "OK", user: updatedUser });
-//   }
+    return NextResponse.json({ message: "OK" });
+  }
 
   // DELETE
-//   if (eventType === "user.deleted") {
-//     const { id } = evt.data;
+  if (eventType === "user.deleted") {
+    const { id } = evt.data;
 
-//     const deletedUser = await deleteUser(id!);
+    const deletedUser = await deleteUser(id!);
 
-//     return NextResponse.json({ message: "OK", user: deletedUser });
-//   }
+    return NextResponse.json({ message: "OK", user: deletedUser });
+  }
 
-//   console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
-//   console.log("Webhook body:", body);
+  console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
+  console.log("Webhook body:", body);
 
-//   return new Response("", { status: 200 });
+  return new Response("", { status: 200 });
 }

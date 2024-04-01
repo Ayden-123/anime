@@ -13,11 +13,11 @@ declare type GenerateInput = {
 
 declare type User = {
     id?: number,
-    email: string,
-    nickname?: string,
+    email?: string,
+    username?: string,
     avatarUrl?: string,
     createAt?: string,
     credit?: number,
     userId?: string,
-    clerkId: string
+    clerkId?: string
 }

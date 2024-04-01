@@ -4,39 +4,59 @@ import mysql from 'mysql2/promise';
 export async function insertUser(user: User) {
     try {
         const db = await getDb()
-        // const [results, fields] = await db.query(
-        //     'SELECT * FROM `user`'
-        //   );
-        
         const createAt: string = new Date().toISOString();
         
         const [results, fields] = await db.query(
             `INSERT INTO user 
-            (clerkId, email, nickname, avatarUrl, createAt, userId) 
+            (clerkId, email, username, avatarUrl, createAt, userId) 
             VALUES 
             (?, ?, ?, ?, ?, ?)
         `,
-            [user.clerkId, user.email, user.nickname, user.avatarUrl, createAt, user.userId]
+            [user.clerkId, user.email, user.username, user.avatarUrl, createAt, user.userId]
         );
         console.log('insert完成')
         console.log('result', results); // 结果集
         console.log('fields', fields); // 额外的元数据（如果有的话）
-
+        return true
     } catch (error) {
         console.log('insertUser遇到错误了', error)
+        return false;
     }
-
-    
-    
-
-
-
-    // console.log('result', results); // 结果集
-    // console.log('fields', fields); // 额外的元数据（如果有的话）
-
-
-    
-    return ;
 }
 
 
+export async function updateUser(clearkId: string, user: User) {
+    try {
+        const db = await getDb()
+        const [results, fields] = await db.query(
+            `UPDATE user
+            SET username = ?, avatarUrl = ?
+            WHERE clerkId = ?
+        `,
+            [user.username, user.avatarUrl, clearkId]
+        );
+        console.log('updateUser完成')
+        return true
+    } catch (error) {
+        console.log('updateUser遇到错误了', error)
+        return false;
+    }
+}
+
+
+export async function deleteUser(clearkId: string) {
+    try {
+        const db = await getDb()
+        const [results, fields] = await db.query(
+            `DELETE FROM user
+            WHERE clerkId = ?
+        `,
+            [clearkId]
+        );
+        console.log('deleteUser完成')
+        return true
+    } catch (error) {
+        console.log('deleteUser遇到错误了', error)
+        return false;
+    }
+}
