@@ -8,15 +8,15 @@ export async function insertUser(user: User) {
         //     'SELECT * FROM `user`'
         //   );
         
-        const createdAt: string = new Date().toISOString();
+        const createAt: string = new Date().toISOString();
         
         const [results, fields] = await db.query(
             `INSERT INTO user 
-            (clearId, email, nickname, avatarUrl, createdAt, userId) 
+            (clerkId, email, nickname, avatarUrl, createAt, userId) 
             VALUES 
             ($1, $2, $3, $4, $5, $6)
         `,
-            [user.clerkId, user.email, user.nickname, user.avatarUrl, createdAt, user.userId]
+            [user.clerkId, user.email, user.nickname, user.avatarUrl, createAt, user.userId]
         );
         console.log('result', results); // 结果集
         console.log('fields', fields); // 额外的元数据（如果有的话）
