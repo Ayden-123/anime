@@ -14,7 +14,7 @@ export async function insertUser(user: User) {
             `INSERT INTO user 
             (clerkId, email, nickname, avatarUrl, createAt, userId) 
             VALUES 
-            ($1, $2, $3, $4, $5, $6)
+            (?, ?, ?, ?, ?, ?)
         `,
             [user.clerkId, user.email, user.nickname, user.avatarUrl, createAt, user.userId]
         );
