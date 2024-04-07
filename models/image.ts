@@ -9,11 +9,11 @@ export async function insertImage(image: Image) {
         const userId = '1'
         const [results, fields] = await db.query(
             `INSERT INTO image 
-            (userId, imageUrl, tag, prompt, createAt) 
+            (id, userId, imageUrl, tag, prompt, createAt) 
             VALUES 
-            (?, ?, ?, ?, ?)
+            (?, ?, ?, ?, ?, ?)
         `,
-            [userId, image.imageUrl, image.tag, image.prompt, createAt]
+            [image.id, userId, image.imageUrl, image.tag, image.prompt, createAt]
         );
         console.log('insertImage完成')
         return true

@@ -30,7 +30,7 @@ const Collection = () => {
     }, [])
 
   return (
-    <div>
+    <div className="mt-5">
       {images.length > 0 ? (
         <ul className="collection-list">
           {images.map((image) => (

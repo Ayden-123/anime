@@ -1,0 +1,15 @@
+{
+    "brand": {
+        "name": "Anime Maker",
+        "title": "Anime Maker",
+        "sub_title": "Use AI to create anime characters and unleash your creativity"
+    },
+    "generate": {
+        "promptInput": "Please enter the character description you need",
+        "promptSubmit": "Generate",
+        "nsfwAlert": "It is detected that the generated image contains NSFW content, please try changing the prompt word"
+    },
+    "api": {
+        "golbalErr": "Sorry, there was a server error, please try again later...."
+    }
+}

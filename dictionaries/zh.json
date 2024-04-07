@@ -1,0 +1,15 @@
+{
+    "brand": {
+        "name": "动漫人物生成器",
+        "title": "动漫人物制作",
+        "sub_title": "利用AI进行动漫人物制作,释放你的创造力"
+    },
+    "generate": {
+        "promptInput": "请输入你想生成的动漫人物关键词",
+        "promptSubmit": "生成",
+        "nsfwAlert": "检测到生成的图片包含NSFW内容,请尝试更换提示词"
+    },
+    "api": {
+        "golbalErr": "抱歉,服务器出错了,请稍后再试..."
+    }
+}

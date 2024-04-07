@@ -32,7 +32,7 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { Button } from '../ui/button'
 import Link from 'next/link'
-
+import Langswitch from './Langswitch'
 const products = [
     { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
     { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
@@ -50,15 +50,13 @@ function classNames(...classes) {
 }
 export default function Example() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-
     return (
-        <header className="bg-white">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <header className="bg-white shadow-2xl">
+            <nav className="mx-auto flex max-w-8xl items-center justify-between lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
-                        <span className="sr-only">white background</span>
-                        <img className="h-10 w-auto" src="/assets/images/whitebackground.png" alt="logo" />
+                        <span className="sr-only">Anime Maker</span>
+                        <img className="h-20 w-auto" src="/assets/images/Logo-Text.png" alt="logo" />
                     </a>
                 </div>
                 {/* 手机端右边目录打开 */}
@@ -84,15 +82,21 @@ export default function Example() {
                         About
                     </a>
                 </Popover.Group>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <SignedIn>
-                        <UserButton afterSignOutUrl='/' showName />
-                    </SignedIn>
-                    <SignedOut>
-                        <Button asChild className="button bg-purple-gradient bg-cover">
-                            <Link href="/sign-in">SignedIn</Link>
-                        </Button>
-                    </SignedOut>
+                
+                <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:space-x-3">
+                    <div >
+                        <Langswitch />
+                    </div>
+                    <div >
+                        <SignedIn>
+                            <UserButton afterSignOutUrl='/' showName />
+                        </SignedIn>
+                        <SignedOut>
+                            <Button asChild className="button bg-purple-gradient bg-cover">
+                                <Link href="/sign-in">SignedIn</Link>
+                            </Button>
+                        </SignedOut>
+                    </div>
                 </div>
             </nav>
             {/* 手机端目录 */}

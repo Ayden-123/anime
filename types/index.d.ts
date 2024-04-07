@@ -23,10 +23,17 @@ declare type User = {
 }
 
 declare type Image = {
-    id?: number,
+    id?: string,
     userId?: string,
     imageUrl?: string,
     tag?: string,
     prompt?: string,
     createAt?: string
+}
+
+declare type Nav = {
+    title: string;
+    name?: string;
+    url?: string;
+    target?: string;
 }
