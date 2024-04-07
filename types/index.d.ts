@@ -21,3 +21,12 @@ declare type User = {
     userId?: string,
     clerkId?: string
 }
+
+declare type Image = {
+    id?: number,
+    userId?: string,
+    imageUrl?: string,
+    tag?: string,
+    prompt?: string,
+    createAt?: string
+}

@@ -68,6 +68,7 @@ export async function POST(req: Request) {
         username: username!,
         avatarUrl: image_url,
         userId: userId,
+        credit: 10,
     };
 
     const flag = await insertUser(user)

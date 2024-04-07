@@ -11,91 +11,72 @@ import { getuid } from 'process';
 import { getUuid } from '@/lib';
 import Image from 'next/image'
 import { insertUser } from '@/models/user';
-
-const myLoader = ({ src, width, quality }) => {
-    // return `https://example.com/${src}?w=${width}&q=${quality || 75}`
-}
+import { auth } from '@clerk/nextjs';
 
 const GenerateForm = () => {
     const [query, setQuery] = useState("");
     const [isPending, startGenerate] = useTransition()
-    const [imageSrc, setImageSrc] = useState('')
+    const [imageSrc, setImageSrc] = useState("")
     const [generating, setGenerating] = useState(false)
 
     const submit = async () => {
 
-        const user: User = {
-            clerkId: "sdf",
-            email: "fasdf",
-            userId: "fsdaf"
+        setGenerating(true)
+        const generateInput: GenerateInput = {
+            guidance_scale: 7,
+            height: 512,
+            prompt: query,
+            num_inference_steps: 20,
+            num_outputs: 1,
+            scheduler: "DPMSolverMultistep",
+            width: 512,
+            negative_prompt: ""
+        };
+
+        try {
+            startGenerate(async () => {
+                const output = await generateImage(generateInput)
+                let imageUrl = output[0];
+                if (imageUrl === undefined) {
+                    console.log('图片生成为NSFW内容')
+                    setGenerating(false)
+                    return
+                }
+
+                let fileName = getUuid() + '.png'
+                fetchAndConvertImage(imageUrl)
+                    .then(async ({ blob, file }) => {
+                        console.log('fetch完成')
+                        const ossUrl = await uploadAndDownloadFile(fileName, blob)
+                        if (ossUrl) {
+                            // const imageUrl = URL.createObjectURL(blob); // 这是将blob或file转为url的方法
+                            setImageSrc(ossUrl);
+
+                            const image: Image = {
+                                imageUrl: imageUrl,
+                                tag: "1",
+                                prompt: query,
+                            }
+                            const uri = "/api/v1/insertImage"
+                            const resp = await fetch(uri, {
+                                method: "POST",
+                                body: JSON.stringify(image)
+                            })
+                            const res = resp.json()
+                            console.log('图片添加至数据库中')
+                            
+                        } else {
+                            console.log('图片oss录入失败')
+                        }
+                    })
+                    .catch(error => {
+                        console.log('uploadAndDownloadFile错误', error)
+                    })
+            })
+        } catch (error) {
+            console.log('generate遇到异常', error)
         }
-        console.log('我要发起请求了')
-        const uri = "/api/mysql/addUser"
-        // const params = {};
-        const resp = await fetch(uri, {
-            method: "POST",
-            body: JSON.stringify(user),
-        })
-        // console.log("resp", resp)
-        const res = await resp.json()
-        // console.log("res", res)
-
-        
-
-        // setGenerating(true)
-        // const generateInput: GenerateInput = {
-        //     guidance_scale: 7,
-        //     height: 512,
-        //     prompt: query,
-        //     num_inference_steps: 20,
-        //     num_outputs: 1,
-        //     scheduler: "DPMSolverMultistep",
-        //     width: 512,
-        //     negative_prompt: ""
-        // };
-        // const user: User = {
-        //     clerkId: "12",
-        //     email: "fsda",
-        //     nickname: "fsda",
-        //     userId: "12"
-        // }
-        // const newUser = await insertUser(user)
-
-
-        // try {
-        //     startGenerate(async () => {
-        //         const output = await generateImage(generateInput)
-        //         let imageUrl = output[0];
-        //         if (imageUrl === undefined) {
-        //             console.log('图片生成为NSFW内容')
-        //             setGenerating(false)
-        //             return
-        //         }
-
-        //         let fileName = getUuid() + '.png'
-
-        //         fetchAndConvertImage(imageUrl)
-        //             .then(async ({ blob, file }) => {
-        //                 console.log('fetch完成')
-        //                 let flag = await uploadAndDownloadFile(fileName, blob)
-        //                 if (flag) {
-        //                     const url = URL.createObjectURL(blob);
-        //                     setImageSrc(url);
-        //                 } else {
-        //                     setGenerating(false)
-        //                     console.log('图片oss录入失败')
-        //                 }
-        //             })
-        //             .catch(error => {
-        //                 setGenerating(false)
-        //                 console.log('fetchAndConvertImage错误', imageUrl)
-        //             })
-        //     })
-
-        // } catch (error) {
-        //     setGenerating(false)
-        //     console.log('generate遇到异常', error)
-        // }
+        setGenerating(false)
     }
 
     return (
