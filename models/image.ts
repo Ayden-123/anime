@@ -6,14 +6,13 @@ export async function insertImage(image: Image) {
         const db = await getDb()
         const createAt: string = new Date().toISOString();
         // userId得从root目录传下来
-        const userId = '1'
         const [results, fields] = await db.query(
             `INSERT INTO image 
             (id, userId, imageUrl, tag, prompt, createAt) 
             VALUES 
             (?, ?, ?, ?, ?, ?)
         `,
-            [image.id, userId, image.imageUrl, image.tag, image.prompt, createAt]
+            [image.id, image.userId, image.imageUrl, image.tag, image.prompt, createAt]
         );
         console.log('insertImage完成')
         return true
@@ -35,6 +34,19 @@ export async function getImages() {
         return results
     } catch (error) {
         console.log('getImages遇到错误了', error)
+        return;
+    }
+}
+
+export async function getImageDetailed(id : string) {
+    try {
+        const db = await getDb()
+        const [results, fields] = await db.query(
+            `SELECT * FROM image WHERE id = ?`, 
+                [id]);
+        return results
+    } catch (error) {
+        console.log('getImageDetailed遇到错误了', error)
         return;
     }
 }

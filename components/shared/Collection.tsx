@@ -1,9 +1,10 @@
 "use client"
-import Link from 'next/link';
 import React, { useState } from 'react'
 import { useEffect } from "react";
 import Image from 'next/image'
-const Collection = () => {
+import Link from "next/link";
+
+const Collection = ({ lang, dict}: { lang: string; dict: any }) => {
     const [images, setImages] = useState([])
     async function getImages() {
         try {
@@ -15,7 +16,6 @@ const Collection = () => {
                 const res = await resp.json();
                 if (res.data) {
                     setImages(res.data)
-                    console.log('collections获取的data为', res.data)
                 }
             } else {
                 setImages([])
@@ -34,7 +34,7 @@ const Collection = () => {
       {images.length > 0 ? (
         <ul className="collection-list">
           {images.map((image) => (
-            <Card image={image} key={image.id} />
+              <Card image={image} lang={lang} key={image.id} />
           ))}
         </ul>
       ) : (
@@ -47,10 +47,10 @@ const Collection = () => {
   )
 }
 
-const Card = ({ image }: { image: Image }) => {
+const Card = ({ image, lang }: { image: Image; lang: string }) => {
     return (
       <li>
-        <Link href={``} className="flex flex-1 flex-col gap-5 rounded-[16px] border-2 bg-white p-4">
+        <Link href={`/${lang}/detail/${image.id}`} className="flex flex-1 flex-col gap-5 rounded-[16px] border-2 bg-white p-4">
           <Image
             src={image.imageUrl}
             alt='alt'

@@ -7,9 +7,13 @@
     "generate": {
         "promptInput": "请输入你想生成的动漫人物关键词",
         "promptSubmit": "生成",
-        "nsfwAlert": "检测到生成的图片包含NSFW内容,请尝试更换提示词"
+        "nsfwAlert": "检测到生成的图片包含NSFW内容,请尝试更换提示词",
+        "loading": "生成中,请稍等,这可能需要20秒左右..."
     },
     "api": {
         "golbalErr": "抱歉,服务器出错了,请稍后再试..."
+    },
+    "global": {
+        "toSignIn": "请先登录"
     }
 }

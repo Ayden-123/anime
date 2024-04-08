@@ -60,3 +60,20 @@ export async function deleteUser(clearkId: string) {
         return false;
     }
 }
+
+export async function getUserInfo(clearkId: string) {
+    try {
+        const db = await getDb()
+        const [results, fields] = await db.query(
+            `SELECT * FROM user
+            WHERE clerkId = ?
+        `,
+            [clearkId]
+        );
+        console.log('getUserInfo完成')
+        return results
+    } catch (error) {
+        console.log('getUserInfo遇到错误了', error)
+        return ;
+    }
+}

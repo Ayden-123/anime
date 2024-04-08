@@ -1,10 +1,15 @@
+"use client"
+import { getDictionary } from "@/lib/i18n";
+import Image from 'next/image'
+import Detail from "@/components/shared/Detail";
 
-const Detail = async () => {
+export default async function ({ params }: { params: { lang: string; id: string } }) {
+    const dict = await getDictionary(params.lang)
+
+
     return (
-        <div className="relative isolate overflow-hidden bg-gray-900 px-2 py-12 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
-                hhh
-        </div> 
+        <div className="overflow-hidden px-2 py-20 sm:rounded-3xl sm:px-24">
+            <Detail lang={params.lang} dict={dict} id={params.id} />
+        </div>
     );
-};
-
-export default Detail;
+}

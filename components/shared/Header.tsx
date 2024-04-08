@@ -1,21 +1,3 @@
-// import React from 'react'
-// import Link from 'next/link'
-// import Image from 'next/image'
-
-// const Header = () => {
-//     return (
-//         <header className="header">
-//             <div className="flex size-full flex-col gap-4">
-//                 <nav className="header-nav_elements">
-//                     <div>hhh</div>
-//                 </nav>
-//             </div>
-//         </header>
-//     )
-// }
-
-// export default Header
-
 "use client"
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
@@ -51,7 +33,7 @@ function classNames(...classes) {
 export default function Example() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     return (
-        <header className="bg-white shadow-2xl">
+        <header className="bg-white shadow-2xl position: fixed w-full">
             <nav className="mx-auto flex max-w-8xl items-center justify-between lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
                     <a href="#" className="-m-1.5 p-1.5">
@@ -92,8 +74,8 @@ export default function Example() {
                             <UserButton afterSignOutUrl='/' showName />
                         </SignedIn>
                         <SignedOut>
-                            <Button asChild className="button bg-purple-gradient bg-cover">
-                                <Link href="/sign-in">SignedIn</Link>
+                            <Button asChild className="button bg-cover">
+                                <Link href="/sign-in">Sign In</Link>
                             </Button>
                         </SignedOut>
                     </div>
