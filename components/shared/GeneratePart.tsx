@@ -137,8 +137,9 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                 </Button>
             </div>
             <div className='mt-3 text-center lg:w-2/3 mx-auto'>
+                
                 <p className="text-gray-400 mt-5 text-xs">
-                    Try some like "1girl, bishounen, casual, indoors, sitting, coffee shop, bokeh, night, turtleneck, masterpiece, best quality"
+                    Try some like &ldquo;1girl, bishounen, casual, indoors, sitting, coffee shop, bokeh, night, turtleneck, masterpiece, best quality&ldquo;
                 </p>
             </div>
 
