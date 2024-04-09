@@ -1,7 +1,7 @@
 {
     "brand": {
-        "name": "动漫人物生成器",
-        "title": "动漫人物制作",
+        "name": "Anime Maker",
+        "title": "Anime Maker",
         "sub_title": "利用AI进行动漫人物制作,释放你的创造力"
     },
     "generate": {
@@ -15,5 +15,9 @@
     },
     "global": {
         "toSignIn": "请先登录"
+    },
+    "detail": {
+        "copy": "复制提示词",
+        "download": "下载"
     }
 }

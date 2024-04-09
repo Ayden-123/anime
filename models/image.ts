@@ -14,7 +14,6 @@ export async function insertImage(image: Image) {
         `,
             [image.id, image.userId, image.imageUrl, image.tag, image.prompt, createAt]
         );
-        console.log('insertImage完成')
         return true
     } catch (error) {
         console.log('insertImage遇到错误了', error)

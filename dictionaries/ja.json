@@ -1,22 +1,23 @@
 {
-  "brand": {
-    "name": "Sora.FM",
-    "title": "Sora AI ビデオジェネレーター",
-    "sub_title": "Soraを使用してAIビデオを生成する"
-  },
-  "subscribe": {
-    "placeholder": "メールアドレスを入力してください",
-    "button": "通知を購読する",
-    "tip": "SoraテキストからビデオへのAPIは利用できませんが、公開され次第お知らせします。"
-  },
-  "showcase": {
-    "title": "Sora AI ビデオショーケース",
-    "sub_title": "このビデオはOpenAIのレッドチームによってSoraを使って作成されました。",
-    "more_tip": "さらにAIビデオショーケース"
-  },
-  "tab": {
-    "latest": "最新",
-    "featured": "注目",
-    "random": "ランダム"
-  }
+    "brand": {
+        "name": "アニメメーカー",
+        "title": "アニメメーカー",
+        "sub_title": "AIを使用してアニメキャラクターを作成し、創造力を解放する"
+    },
+    "generate": {
+        "promptInput": "必要なキャラクターの説明を入力してください",
+        "promptSubmit": "生成",
+        "nsfwAlert": "生成された画像にNSFWコンテンツが含まれていることが検出されました。他のプロンプトワードをお試しください",
+        "loading": "生成中です。お待ちください。約20秒かかる場合があります..."
+    },
+    "api": {
+        "golbalErr": "申し訳ありませんが、サーバーエラーが発生しました。後でもう一度お試しください...."
+    },
+    "global": {
+        "toSignIn": "サインインしてください。"
+    },
+    "detail": {
+        "copy": "プロンプトをコピー",
+        "download": "ダウンロード"
+    }
 }

@@ -52,12 +52,10 @@ const Detail = ({ lang, dict, id }: { lang: string; dict: any; id: string }) => 
             <div className="p-4 text-center sm:p-6 md:col-span-2 lg:p-8 ">
                 <div className='lg:w-2/3 mx-auto'>
                     <div className="mx-auto max-w-lg text-center">
-                        <h2 className="text-3xl font-bold sm:text-4xl mx-auto">AnimeMaker Prompt</h2>
+                        <h2 className="text-3xl font-bold sm:text-4xl mx-auto">AnimeMaker</h2>
 
                         <p className="block rounded-xl border border-gray-300 p-4 shadow-sm hover:border-gray-200 mt-5">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut vero aliquid sint distinctio
-                            iure ipsum cupiditate? Quis, odit assumenda? Deleniti quasi inventore, libero reiciendis
-                            minima aliquid tempora. Obcaecati, autem.
+                            {imageDetail.prompt}
                         </p>
                     </div>
                     <div className="flex justify-end">
@@ -66,7 +64,7 @@ const Detail = ({ lang, dict, id }: { lang: string; dict: any; id: string }) => 
                             onCopy={() => message.success({ content: "Copied", duration: 1500})}
                             className='mr-5 mt-3 px-3'
                         >
-                            <Button>Copy Prompt</Button>
+                            <Button>{dict.detail.copy}</Button>
                         </CopyToClipboard>
                     </div>
 
@@ -75,7 +73,7 @@ const Detail = ({ lang, dict, id }: { lang: string; dict: any; id: string }) => 
                             href={imageDetail.imageUrl}
                             className="flex items-center max-w-full gap-2.5 text-sm font-bold uppercase text-white"
                         >
-                            <p>Download</p>
+                            <p>{dict.detail.download}</p>
                             <p className="text-sm">
                                 <FaDownload />
                             </p>

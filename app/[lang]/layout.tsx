@@ -19,7 +19,7 @@ export default async function ({
   const dict = await getDictionary(params.lang)
   return (
     <div className='flex flex-col h-screen justify-between'>
-      <Header />
+      <Header lang={params.lang} dict={dict}/>
       <div>
         {children}
       </div>

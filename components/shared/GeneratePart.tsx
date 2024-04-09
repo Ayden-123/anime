@@ -120,14 +120,15 @@ const GenerateForm = ({ lang, dict, userId }: { lang: string; dict: any; userId:
                 {imageSrc === '' ? (
                     <div>
                         {generating ? (
-                            <div className='mx-auto max-w-lg text-center rounded-xl border border-gray-300 p-4 shadow-sm'>
+                            <div className='flex mx-auto max-w-lg text-center rounded-xl border border-gray-300 p-4 shadow-sm'>
                                 <Image
                                     src='/assets/images/loading1.gif'
                                     alt=""
                                     width={400}
                                     height={400}
+                                    className='m-auto'
                                 />
-                                <p className="mt-5 font-bold">
+                                <p className="mt-5">
                                     {dict.generate.loading}
                                 </p>
                             </div>

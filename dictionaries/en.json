@@ -7,9 +7,17 @@
     "generate": {
         "promptInput": "Please enter the character description you need",
         "promptSubmit": "Generate",
-        "nsfwAlert": "It is detected that the generated image contains NSFW content, please try changing the prompt word"
+        "nsfwAlert": "It is detected that the generated image contains NSFW content, please try changing the prompt word",
+        "loading": "Generating, please wait, this may take about 20 seconds..."
     },
     "api": {
         "golbalErr": "Sorry, there was a server error, please try again later...."
+    },
+    "global": {
+        "toSignIn": "Please SignIn. "
+    },
+    "detail": {
+        "copy": "Copy Prompt",
+        "download": "DOWNLOAD"
     }
 }

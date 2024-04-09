@@ -1,22 +1,23 @@
 {
-  "brand": {
-    "name": "Sora.FM",
-    "title": "Sora AI Video Generator",
-    "sub_title": "Erstelle AI Videos mit Sora, entfessele deine Kreativität."
-  },
-  "subscribe": {
-    "placeholder": "Gib deine E-Mail-Adresse ein",
-    "button": "Abonnieren",
-    "tip": "Die Sora Text-zu-Video API ist derzeit nicht verfügbar, wir werden dich informieren, sobald sie live geht."
-  },
-  "showcase": {
-    "title": "Sora AI Video Showcase",
-    "sub_title": "Dieses Video wurde mit dem Sora Text-zu-Video Modell erstellt",
-    "more_tip": "Mehr AI Video Showcases"
-  },
-  "tab": {
-    "latest": "Neueste",
-    "featured": "Empfohlen",
-    "random": "Zufällig"
-  }
+    "brand": {
+        "name": "Anime-Hersteller",
+        "title": "Anime-Hersteller",
+        "sub_title": "Verwenden Sie KI, um Anime-Charaktere zu erstellen und Ihre Kreativität zu entfesseln"
+    },
+    "generate": {
+        "promptInput": "Bitte geben Sie die Charakterbeschreibung ein, die Sie benötigen",
+        "promptSubmit": "Generieren",
+        "nsfwAlert": "Es wurde festgestellt, dass das generierte Bild NSFW-Inhalte enthält. Versuchen Sie bitte, das Eingabewort zu ändern",
+        "loading": "Generiere, bitte warten Sie, dies kann etwa 20 Sekunden dauern..."
+    },
+    "api": {
+        "golbalErr": "Entschuldigung, es gab einen Serverfehler. Bitte versuchen Sie es später erneut...."
+    },
+    "global": {
+        "toSignIn": "Bitte anmelden."
+    },
+    "detail": {
+        "copy": "Prompt kopieren",
+        "download": "HERUNTERLADEN"
+    }
 }

@@ -30,13 +30,14 @@ const callsToAction = [
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-export default function Example() {
+export default function Example({ lang, dict }: { lang: string; dict: any }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const home = '/' + lang;
     return (
         <header className="bg-white shadow-2xl position: fixed w-full">
             <nav className="mx-auto flex max-w-8xl items-center justify-between lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5 p-1.5">
+                    <a href={home} className="-m-1.5 p-1.5">
                         <span className="sr-only">Anime Maker</span>
                         <img className="h-20 w-auto" src="/assets/images/Logo-Text.png" alt="logo" />
                     </a>
@@ -54,15 +55,15 @@ export default function Example() {
                 </div>
                 {/* header中间的item项 */}
                 <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    {/* <Link href={`/${lang}`} className="text-sm font-semibold leading-6 text-gray-900">
                         Home
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+                    </Link> */}
+                    {/* <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                         Pricing
                     </a>
                     <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                         About
-                    </a>
+                    </a> */}
                 </Popover.Group>
                 
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:space-x-3">
