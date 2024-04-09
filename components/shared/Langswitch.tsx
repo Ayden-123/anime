@@ -11,7 +11,7 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 
 import { localeNames } from "@/lib/i18n";
 
-export default function () {
+const Langswitch = () => {
   const params = useParams();
   const lang = params.lang as string;
   const router = useRouter();
@@ -42,3 +42,5 @@ export default function () {
     </Select>
   );
 }
+
+export default Langswitch

@@ -30,7 +30,7 @@ const callsToAction = [
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
-export default function Example({ lang, dict }: { lang: string; dict: any }) {
+const Header = ({ lang, dict }: { lang: string; dict: any }) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const home = '/' + lang;
     return (
@@ -166,3 +166,5 @@ export default function Example({ lang, dict }: { lang: string; dict: any }) {
         </header>
     )
 }
+
+export default Header

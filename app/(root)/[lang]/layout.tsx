@@ -8,13 +8,13 @@ import { auth, clerkClient } from '@clerk/nextjs';
 import { ReactNode } from "react";
 import { getDictionary } from '@/lib/i18n';
 
-export default async function ({
+const Layout = async ({
   children,
   params,
 }: {
   children: ReactNode;
   params: { lang: string };
-}) {
+}) => {
 
   const dict = await getDictionary(params.lang)
 
@@ -29,3 +29,5 @@ export default async function ({
     </div>
   )
 }
+
+export default Layout

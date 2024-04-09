@@ -14,7 +14,7 @@ import { errCode } from '@/lib/code';
 import { FaDownload } from "react-icons/fa";
 import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
-const GenerateForm = ({ lang, dict }: { lang: string; dict: any }) => {
+const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
     const [query, setQuery] = useState("");
     const [isPending, startGenerate] = useTransition()
     const [imageSrc, setImageSrc] = useState("")
@@ -85,7 +85,7 @@ const GenerateForm = ({ lang, dict }: { lang: string; dict: any }) => {
         await handler()
         setGenerating(false)
     }
-    
+
     async function getUserInfo() {
         try {
             const uri = "/api/v1/getUserInfo"
@@ -191,4 +191,4 @@ const GenerateForm = ({ lang, dict }: { lang: string; dict: any }) => {
     )
 }
 
-export default GenerateForm
+export default GeneratePart

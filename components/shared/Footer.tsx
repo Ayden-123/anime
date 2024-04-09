@@ -1,4 +1,6 @@
-export default function ({ lang, dict }: { lang: string; dict: any }) {
+
+
+const Footer = ({ lang, dict }: { lang: string; dict: any }) => {
     return (
       <section>
         <div className="w-screen flex-col bg-black px-6 py-20 text-white lg:flex lg:px-10 xl:px-24 mt-20">
@@ -63,3 +65,4 @@ export default function ({ lang, dict }: { lang: string; dict: any }) {
     );
   }
   
+  export default Footer

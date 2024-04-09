@@ -5,7 +5,7 @@ import { getDictionary } from '@/lib/i18n';
 import { auth } from '@clerk/nextjs';
 import { clerkClient } from "@clerk/nextjs";
 
-export default async function ({ params }: { params: { lang: string } }) {
+const Page = async ({ params }: { params: { lang: string } }) => {
   const dict = await getDictionary(params.lang);
 
   return (
@@ -19,3 +19,5 @@ export default async function ({ params }: { params: { lang: string } }) {
     </div>
   )
 }
+
+export default Page
