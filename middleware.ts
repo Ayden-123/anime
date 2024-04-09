@@ -16,22 +16,22 @@ export default authMiddleware({
     '/api/v1/getUserInfo'],
 
   afterAuth(auth, req, evt) {
-    const { pathname } = req.nextUrl;
-    // 路由请求可以通过，类似/en
-    if (!pathname.startsWith("/api")) {
-      return NextResponse.next();
-    }
+    // const { pathname } = req.nextUrl;
+    // // 路由请求可以通过，类似/en
+    // if (!pathname.startsWith("/api")) {
+    //   return NextResponse.next();
+    // }
 
-    if (!auth.userId && !auth.isPublicRoute) {
-      if (auth.isApiRoute) {
-        return NextResponse.json(
-          { code: -2, message: "no auth" },
-          { status: 401 }
-        );
-      } else {
-        return NextResponse.redirect(new URL("/sign-in", req.url));
-      }
-    }
+    // if (!auth.userId && !auth.isPublicRoute) {
+    //   if (auth.isApiRoute) {
+    //     return NextResponse.json(
+    //       { code: -2, message: "no auth" },
+    //       { status: 401 }
+    //     );
+    //   } else {
+    //     return NextResponse.redirect(new URL("/sign-in", req.url));
+    //   }
+    // }
     return NextResponse.next();
   },
 });
