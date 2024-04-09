@@ -70,7 +70,6 @@ export async function getUserInfo(clearkId: string) {
         `,
             [clearkId]
         );
-        console.log('getUserInfo完成')
         return results
     } catch (error) {
         console.log('getUserInfo遇到错误了', error)

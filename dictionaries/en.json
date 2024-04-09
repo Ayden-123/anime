@@ -14,7 +14,7 @@
         "golbalErr": "Sorry, there was a server error, please try again later...."
     },
     "global": {
-        "toSignIn": "Please SignIn. "
+        "toSignIn": "Please Sign In. "
     },
     "detail": {
         "copy": "Copy Prompt",

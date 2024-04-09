@@ -3,7 +3,7 @@ import { getUserInfo } from "@/models/user";
 
 import { auth, currentUser } from "@clerk/nextjs";
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
     try {
         const clerkId = auth().userId;
         if (!clerkId) {
@@ -15,7 +15,6 @@ export async function POST(req: Request) {
 
         return respData(userInfo);
     } catch (e) {
-        console.log("get user info failed", e);
         return respErr("get user info failed");
     }
 }

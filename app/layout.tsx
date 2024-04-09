@@ -1,40 +1,9 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
+import { auth, clerkClient, ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { getDictionary } from "@/lib/i18n";
-
-// const IBMPlex = IBM_Plex_Sans({
-//   subsets: ["latin"],
-//   weight: ['400', '500', '600', '700'],
-//   variable: '--font-ibm-plex'
-// });
-
-// export const metadata: Metadata = {
-//   title: "anime",
-//   description: "anime",
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <ClerkProvider appearance={{
-//       variables: { colorPrimary: '#624cf5' }
-//     }}>
-//       <html lang="en">
-//         <body className={cn("font-IBMPlex antialiased")}>
-//           {children}
-//         </body>
-//       </html>
-//     </ClerkProvider>
-
-//   );
-// }
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,8 +16,8 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: `%s, ${dict.brand.title} | Sora.FM`,
-      default: `${dict.brand.title} | Sora.FM`,
+      template: `%s, ${dict.brand.title}`,
+      default: `${dict.brand.title}`,
     },
     description: `${dict.brand.title}, ${dict.brand.sub_title}`,
     keywords:
@@ -63,6 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }>) {
+
   return (
     <ClerkProvider appearance={{
       variables: { colorPrimary: '#624cf5' }

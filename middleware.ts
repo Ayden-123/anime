@@ -1,19 +1,26 @@
 import { authMiddleware } from "@clerk/nextjs";
 import { NextRequest, NextResponse } from "next/server";
-import { defaultLocale, getLocale, locales } from "./lib/i18n";
- 
-export default authMiddleware({
-  // publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/insertImage', '/api/v1/getImages', '/api/v1/getImageDetailed'],
-  // ignoredRoutes: ['/api/v1/insertImage', '/api/v1/getImages', '/api/v1/getImageDetailed']
+// import { defaultLocale, getLocale, locales } from "./lib/i18n";
+import createMiddleware from "next-intl/middleware";
 
-  publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/getImages', '/api/v1/getImageDetailed', '/en'],
-  
+const intlMiddleware = createMiddleware({
+  locales: ["en", "zh"],
+
+  defaultLocale: "en",
+});
+
+export default authMiddleware({
+
+
+  publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/getImages', '/api/v1/getImageDetailed',
+    '/api/v1/getUserInfo'],
+
   afterAuth(auth, req, evt) {
     const { pathname } = req.nextUrl;
     // 路由请求可以通过，类似/en
-     if (!pathname.startsWith("/api")) {
-        return NextResponse.next();
-     }
+    if (!pathname.startsWith("/api")) {
+      return NextResponse.next();
+    }
 
     if (!auth.userId && !auth.isPublicRoute) {
       if (auth.isApiRoute) {
@@ -28,7 +35,7 @@ export default authMiddleware({
     return NextResponse.next();
   },
 });
- 
+
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|trpc)(.*)", "/"],
 };

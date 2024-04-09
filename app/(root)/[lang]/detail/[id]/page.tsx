@@ -1,4 +1,3 @@
-"use client"
 import { getDictionary } from "@/lib/i18n";
 import Image from 'next/image'
 import Detail from "@/components/shared/Detail";

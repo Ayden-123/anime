@@ -14,11 +14,12 @@ import { errCode } from '@/lib/code';
 import { FaDownload } from "react-icons/fa";
 import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
-const GenerateForm = ({ lang, dict, userId }: { lang: string; dict: any; userId: string}) => {
+const GenerateForm = ({ lang, dict }: { lang: string; dict: any }) => {
     const [query, setQuery] = useState("");
     const [isPending, startGenerate] = useTransition()
     const [imageSrc, setImageSrc] = useState("")
     const [generating, setGenerating] = useState(false)
+    const [userInfo, setUserInfo] = useState<User>(null)
 
     const handler = async () => {
         try {
@@ -48,7 +49,7 @@ const GenerateForm = ({ lang, dict, userId }: { lang: string; dict: any; userId:
                         setImageSrc(ossUrl);
                         const image: Image = {
                             id: getUuid(),
-                            userId: userId,
+                            userId: userInfo.userId,
                             imageUrl: ossUrl,
                             tag: "1",
                             prompt: query,
@@ -75,7 +76,7 @@ const GenerateForm = ({ lang, dict, userId }: { lang: string; dict: any; userId:
     }
 
     const submit = async () => {
-         if (!userId) {
+         if (!userInfo) {
             message.error({ content: dict.global.toSignIn, duration: 2000 });
             return;
         }
@@ -84,6 +85,31 @@ const GenerateForm = ({ lang, dict, userId }: { lang: string; dict: any; userId:
         await handler()
         setGenerating(false)
     }
+    
+    async function getUserInfo() {
+        try {
+            const uri = "/api/v1/getUserInfo"
+            const resp = await fetch(uri, {
+                method: "GET",
+            })
+            if (resp.ok) {
+                const res = await resp.json();
+                if (res.data) {
+                    setUserInfo(res.data)
+                }
+
+            } else {
+                setUserInfo(null)
+            }
+        } catch (e) {
+            console.log('getUserInfo failed', e)
+            setUserInfo(null)
+        }
+    }
+
+    useEffect(() => {
+        getUserInfo()
+    }, [])
 
     return (
 

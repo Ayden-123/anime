@@ -4,7 +4,7 @@ import Replicate from "replicate";
 import GeneratePart from '@/components/shared/GeneratePart';
 import Collection from '@/components/shared/Collection';
 import Footer from '@/components/shared/Footer';
-import { auth } from '@clerk/nextjs';
+import { auth, clerkClient } from '@clerk/nextjs';
 import { ReactNode } from "react";
 import { getDictionary } from '@/lib/i18n';
 
@@ -17,7 +17,9 @@ export default async function ({
 }) {
 
   const dict = await getDictionary(params.lang)
+
   return (
+    
     <div className='flex flex-col h-screen justify-between'>
       <Header lang={params.lang} dict={dict}/>
       <div>
@@ -25,6 +27,5 @@ export default async function ({
       </div>
       <Footer lang={params.lang} dict={dict} />
     </div>
-
   )
 }

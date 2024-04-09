@@ -4,11 +4,11 @@ export default function ({ lang, dict }: { lang: string; dict: any }) {
         <div className="w-screen flex-col bg-black px-6 py-20 text-white lg:flex lg:px-10 xl:px-24 mt-20">
           <div className="lg:flex lg:flex-row lg:justify-between">
             <div>
-              <a href="https://sora.fm" className="inline-block max-w-full">
+              <a href="/en" className="inline-block max-w-full">
                 AnimeMaker
               </a>
               <p className="font-inter mt-4 max-w-[350px] text-base font-light text-gray-400">
-                Generate beautiful Anine with AI.
+                Generate beautiful Anime with AI.
               </p>
               <div className="mb-8 mt-6 flex flex-row">
                 {/* <Social /> */}
