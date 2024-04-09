@@ -12,6 +12,6 @@ export async function GET(req: Request) {
         return respData(res)
     } catch (e) {
         console.log("getImages failed");
-        return respErr("getImages failed");
+        return respErr("getImages failed" + e);
     }
 }

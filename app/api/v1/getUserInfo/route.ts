@@ -15,6 +15,6 @@ export async function GET(req: Request) {
 
         return respData(userInfo);
     } catch (e) {
-        return respErr("get user info failed");
+        return respErr(e);
     }
 }
