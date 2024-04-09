@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import { insertImage } from "@/models/image";
 import { auth } from "@clerk/nextjs";
-
+export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
     const body = await req.text();
     const image: Image = await JSON.parse(body);

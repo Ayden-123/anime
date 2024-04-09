@@ -8,7 +8,6 @@ const Collection = ({ lang, dict}: { lang: string; dict: any }) => {
     const [images, setImages] = useState([])
     async function getImages() {
         try {
-          console.log("collection发起请求")
             const uri = "/api/v1/getImages"
             const resp = await fetch(uri, {
                 method: "GET",
@@ -16,11 +15,9 @@ const Collection = ({ lang, dict}: { lang: string; dict: any }) => {
             if (resp.ok) {
                 const res = await resp.json();
                 if (res.data) {
-                  console.log("collection的res.data为", res.data)
                     setImages(res.data)
                 }
             } else {
-              console.log("collection失败, resp为", resp)
                 setImages([])
             }
         } catch (e) {

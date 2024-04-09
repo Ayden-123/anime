@@ -2,6 +2,8 @@
 import { getImageDetailed, getImages } from "@/models/image";
 import { NextResponse, NextRequest } from "next/server";
 import { respData, respErr } from "@/lib/resp";
+
+export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
     try {
         const searchParams = req.nextUrl.searchParams
