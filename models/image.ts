@@ -29,7 +29,6 @@ export async function getImages() {
         const [results, fields] = await db.query(
             `SELECT * FROM image
         `);
-        console.log('getImages完成')
         return results
     } catch (error) {
         console.log('getImages遇到错误了', error)

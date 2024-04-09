@@ -19,7 +19,14 @@ const nextConfig = {
                 hostname: "*.aliyuncs.com"
             }
         ]
-    }
+    },
+    async redirects() {
+        return [{
+            source: '/',
+            destination: '/en',
+            permanent: true,
+        }, ]
+    },
 };
 
 export default nextConfig;
