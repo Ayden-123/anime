@@ -3,7 +3,8 @@ import { Snackbar, Alert } from '@mui/material';
 import { createRoot } from 'react-dom/client';
 
 function Message(props) {
-    const { content, duration, type } = {...props};
+    // const { content, duration, type } = {...props};
+    const { content = "", duration = 0, type = "" } = {...props};
     // 开关控制：默认true,调用时会直接打开
     const [open, setOpen] = useState(true);
     // 关闭消息提示

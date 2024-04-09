@@ -11,7 +11,6 @@ export async function generateImage ( generateInput : GenerateInput) {
         
         return output;
     } catch (error) {
-        console.error("generateImage fail", error);
         return [];
     }
     
