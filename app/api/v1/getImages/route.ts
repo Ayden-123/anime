@@ -3,6 +3,9 @@ import { getImages } from "@/models/image";
 import { NextResponse } from "next/server";
 import { respData, respErr } from "@/lib/resp";
 import { auth, clerkClient } from "@clerk/nextjs";
+
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: Request) {
     try {
         console.log('getImages server 接收到了')

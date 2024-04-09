@@ -2,7 +2,7 @@ import { respData, respErr } from "@/lib/resp";
 import { getUserInfo } from "@/models/user";
 
 import { auth, currentUser } from "@clerk/nextjs";
-
+export const dynamic = 'force-dynamic';
 export async function GET(req: Request) {
     try {
         const clerkId = auth().userId;
