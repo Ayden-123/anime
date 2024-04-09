@@ -6,7 +6,7 @@ export default authMiddleware({
   // publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/insertImage', '/api/v1/getImages', '/api/v1/getImageDetailed'],
   // ignoredRoutes: ['/api/v1/insertImage', '/api/v1/getImages', '/api/v1/getImageDetailed']
 
-  publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/getImages', '/api/v1/getImageDetailed', '/zh'],
+  publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/getImages', '/api/v1/getImageDetailed', '/en'],
   
   afterAuth(auth, req, evt) {
     const { pathname } = req.nextUrl;

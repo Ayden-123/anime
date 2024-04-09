@@ -8,8 +8,13 @@ import { clerkClient } from "@clerk/nextjs";
 export default async function ({ params }: { params: { lang: string } }) {
   const dict = await getDictionary(params.lang);
   const clerkId = auth().userId;
-  const user = await clerkClient.users.getUser(clerkId)
-  const userId = user.publicMetadata.userId as string
+  const userId = await getUserId(clerkId)
+  
+  async function getUserId(clerkId) {
+    if (!clerkId) return ""
+    const clerkUser = await clerkClient.users.getUser(clerkId)
+    return clerkUser.publicMetadata.userId as string
+  }
 
   return (
     <div className="mb-auto">
