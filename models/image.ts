@@ -27,7 +27,7 @@ export async function getImages() {
         const createAt: string = new Date().toISOString();
         
         const [results, fields] = await db.query(
-            `SELECT * FROM image
+            `SELECT * FROM image ORDER BY priority DESC LIMIT 30
         `);
         return results
     } catch (error) {

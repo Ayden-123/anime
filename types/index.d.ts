@@ -29,7 +29,7 @@ declare type Image = {
     tag?: string,
     prompt?: string,
     createAt?: string,
-    order?: number
+    priority?: number
 }
 
 declare type Nav = {
