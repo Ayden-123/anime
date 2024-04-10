@@ -80,9 +80,6 @@ const Detail = ({ lang, dict, id }: { lang: string; dict: any; id: string }) => 
                         </a>
                     </div>
 
-                    {/* <p className="mt-8 text-xs font-medium uppercase text-gray-400">
-                    Offer valid until 24th March, 2021 *
-                </p> */}
                 </div>
 
 

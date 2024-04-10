@@ -175,7 +175,7 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                     <div className='rounded-xl border border-gray-300 p-4 shadow-sm mt-5'>
                         <div className='flex justify-end'>
                             <a
-                                href="http://anime123.oss-cn-hangzhou.aliyuncs.com/42af265a-593f-4238-9cf4-b5afd114c1f3.png"
+                                href={imageSrc}
                                 className="font-bold "
                             >
                                 <p>
