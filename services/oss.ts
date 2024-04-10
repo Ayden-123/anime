@@ -9,9 +9,7 @@ const client = new OSS({
   
 export async function uploadAndDownloadFile(fileName, blob) {
   try {
-    console.log('filename', blob)
     const uploadResult = await client.put(fileName, blob);
-    console.log('上传成功:', uploadResult);
 
     return uploadResult.url;
   } catch (error) {

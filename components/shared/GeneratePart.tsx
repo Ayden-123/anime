@@ -46,11 +46,12 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                 .then(async ({ blob, file }) => {
                     const ossUrl = await uploadAndDownloadFile(fileName, blob)
                     if (ossUrl) {
-                        setImageSrc(ossUrl);
+                        let secureUrl = ossUrl.replace("http://", "https://");
+                        setImageSrc(secureUrl);
                         const image: Image = {
                             id: getUuid(),
                             userId: userInfo.userId,
-                            imageUrl: ossUrl,
+                            imageUrl: secureUrl,
                             tag: "1",
                             prompt: query,
                         }
@@ -70,6 +71,7 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                     message.warning({ content: msg, duration: 2000 })
                 })
         } catch (error) {
+            console.log('103error', error)
             let msg = errCode.E103 + dict.api.golbalErr;
             message.warning({ content: msg, duration: 2000 })
         }
@@ -137,7 +139,7 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                 </Button>
             </div>
             <div className='mt-3 text-center lg:w-2/3 mx-auto'>
-                
+
                 <p className="text-gray-400 mt-5 text-xs">
                     Try some like &ldquo;1girl, bishounen, casual, indoors, sitting, coffee shop, bokeh, night, turtleneck, masterpiece, best quality&ldquo;
                 </p>
