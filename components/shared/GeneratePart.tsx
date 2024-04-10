@@ -34,6 +34,10 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                 negative_prompt: ""
             };
             const output = await generateImage(generateInput)
+            if (!output) {
+                let msg = errCode.E105 + dict.api.golbalErr;
+                message.warning({ content: msg, duration: 2000 })
+            }
             let imageUrl = output[0];
             if (imageUrl === undefined) {
                 const msg = dict.generate.nsfwAlert;
