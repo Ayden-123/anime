@@ -8,28 +8,6 @@ import { siteConfig } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string };
-}): Promise<Metadata> {
-  const dict = await getDictionary(params.lang);
-
-  return {
-    title: {
-      template: `%s, ${dict.meta.meta_title}`,
-      default: `${dict.meta.meta_title}`,
-    },
-    description: `${dict.meta.meta_desc}`,
-    keywords:  `${dict.meta.meta_keywords}`,
-    authors: siteConfig.authors,
-    creator: siteConfig.creator,
-    icons: siteConfig.icons,
-    metadataBase: siteConfig.metadataBase,
-    openGraph: siteConfig.openGraph,
-    twitter: siteConfig.twitter,
-  };
-}
 
 export default function RootLayout({
   children,

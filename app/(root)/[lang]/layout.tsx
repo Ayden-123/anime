@@ -7,6 +7,31 @@ import Footer from '@/components/shared/Footer';
 import { auth, clerkClient } from '@clerk/nextjs';
 import { ReactNode } from "react";
 import { getDictionary } from '@/lib/i18n';
+import { Metadata } from 'next';
+import { siteConfig } from '@/lib/site';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Promise<Metadata> {
+  const dict = await getDictionary(params.lang);
+
+  return {
+    title: {
+      template: `%s, ${dict.meta.meta_title}`,
+      default: `${dict.meta.meta_title}`,
+    },
+    description: `${dict.meta.meta_desc}`,
+    keywords:  `${dict.meta.meta_keywords}`,
+    authors: siteConfig.authors,
+    creator: siteConfig.creator,
+    icons: siteConfig.icons,
+    metadataBase: siteConfig.metadataBase,
+    openGraph: siteConfig.openGraph,
+    twitter: siteConfig.twitter,
+  };
+}
 
 const Layout = async ({
   children,
