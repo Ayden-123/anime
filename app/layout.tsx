@@ -4,6 +4,7 @@ import { IBM_Plex_Sans, Inter } from "next/font/google";
 import { auth, clerkClient, ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { getDictionary } from "@/lib/i18n";
+import { siteConfig } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,12 +17,17 @@ export async function generateMetadata({
 
   return {
     title: {
-      template: `%s, ${dict.brand.title}`,
-      default: `${dict.brand.title}`,
+      template: `%s, ${dict.meta.meta_title}`,
+      default: `${dict.meta.meta_title}`,
     },
-    description: `${dict.brand.title}, ${dict.brand.sub_title}`,
-    keywords:
-      "sora,sora fm,sora ai,openai sora,video ai,ai video,sora video,ai video generator,text to video,sora ai video,sora ai video generator,sora webui,sora showcase,sora ai showcases",
+    description: `${dict.meta.meta_desc}`,
+    keywords:  `${dict.meta.meta_keywords}`,
+    authors: siteConfig.authors,
+    creator: siteConfig.creator,
+    icons: siteConfig.icons,
+    metadataBase: siteConfig.metadataBase,
+    openGraph: siteConfig.openGraph,
+    twitter: siteConfig.twitter,
   };
 }
 

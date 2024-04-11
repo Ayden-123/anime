@@ -53,7 +53,7 @@ const Card = ({ image, lang }: { image: Image; lang: string }) => {
         <Link href={`/${lang}/detail/${image.id}`} className="flex flex-1 flex-col gap-5 rounded-[16px] border-2 bg-white p-4">
           <Image
             src={image.imageUrl}
-            alt='alt'
+            alt={image.prompt}
             width='500'
             height='500'
             loading="lazy"

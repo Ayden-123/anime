@@ -44,7 +44,7 @@ const Detail = ({ lang, dict, id }: { lang: string; dict: any; id: string }) => 
     return (
         <section className="overflow-hidden rounded-lg shadow-2xl md:grid md:grid-cols-3 mt-20 max-w-7xl mx-auto">
             <img
-                alt=""
+                alt={imageDetail.prompt}
                 src={imageDetail.imageUrl}
                 className="h-32 w-full object-cover md:h-full"
             />
