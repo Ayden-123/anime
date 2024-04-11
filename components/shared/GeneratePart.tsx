@@ -145,8 +145,8 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
             </div>
             <div className='mt-3 text-center lg:w-2/3 mx-auto'>
 
-                <p className="text-gray-400 mt-5 text-xs">
-                    Try some like &ldquo;1girl, bishounen, casual, indoors, sitting, coffee shop, bokeh, night, turtleneck, masterpiece, best quality&ldquo;
+                <p className="text-gray-600 mt-5 text-xs">
+                    Try something like &ldquo;1girl, bishounen, casual, indoors, sitting, coffee shop, bokeh, night, turtleneck, masterpiece, best quality&ldquo;
                 </p>
             </div>
 
@@ -166,7 +166,6 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
                                     {dict.generate.loading}
                                 </p>
                             </div>
-
                         ) : (
                             <></>
                         )}
