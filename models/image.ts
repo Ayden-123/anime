@@ -42,7 +42,11 @@ export async function getImageDetailed(id : string) {
         const [results, fields] = await db.query(
             `SELECT * FROM image WHERE id = ?`, 
                 [id]);
-        return results
+        if (results .length !== 0){
+            return results[0]
+        } else {
+            return {}
+        }
     } catch (error) {
         console.log('getImageDetailed遇到错误了', error)
         return;

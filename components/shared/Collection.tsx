@@ -1,40 +1,15 @@
-"use client"
-import React, { useState } from 'react'
-import { useEffect } from "react";
+import React from 'react'
 import Image from 'next/image'
 import Link from "next/link";
+import { getImages } from '@/models/image';
 
-const Collection = ({ lang, dict}: { lang: string; dict: any }) => {
-    const [images, setImages] = useState([])
-    async function getImages() {
-        try {
-            const uri = "/api/v1/getImages"
-            const resp = await fetch(uri, {
-                method: "GET",
-            })
-            if (resp.ok) {
-                const res = await resp.json();
-                if (res.data) {
-                    setImages(res.data)
-                }
-            } else {
-                setImages([])
-            }
-        } catch (e) {
-            console.log('getImages failed', e)
-        }
-    }
-
-    useEffect(() => {
-        getImages()
-    }, [])
-
+const Collection = ({ lang, dict, images }: { lang: string; dict: any; images: Image[] }) => {
   return (
     <div className="mt-5">
       {images.length > 0 ? (
         <ul className="collection-list">
-          {images.map((image) => (
-              <Card image={image} lang={lang} key={image.id} />
+          {images.map((image: Image, idx: number) => (
+            <Card image={image} lang={lang} key={image.id} />
           ))}
         </ul>
       ) : (
@@ -48,9 +23,10 @@ const Collection = ({ lang, dict}: { lang: string; dict: any }) => {
 }
 
 const Card = ({ image, lang }: { image: Image; lang: string }) => {
-    return (
-      <li>
-        <Link href={`/${lang}/detail/${image.id}`} className="flex flex-1 flex-col gap-5 rounded-[16px] border-2 bg-white p-4">
+  return (
+    <li>
+      <a href={`/${lang}/detail/${image.id}`} target="_self" className="flex flex-1 flex-col gap-5 rounded-[16px] border-2 bg-white p-4">
+        <div>
           <Image
             src={image.imageUrl}
             alt={image.prompt}
@@ -62,12 +38,13 @@ const Card = ({ image, lang }: { image: Image; lang: string }) => {
           />
           <div className="flex-between">
             <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600">
-                {image.prompt}
+              {image.prompt}
             </p>
           </div>
-        </Link>
-      </li>
-    );
-  };
+        </div>
+      </a>
+    </li>
+  );
+};
 
 export default Collection

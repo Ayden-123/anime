@@ -119,7 +119,6 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
     }, [])
 
     return (
-
         <div className="overflow-hidden px-2 py-12 sm:rounded-3xl sm:px-24">
             <h1 className="mx-auto max-w-4xl text-center text-3xl font-bold tracking-tight text-primary sm:text-6xl">
                 {dict.brand.title}

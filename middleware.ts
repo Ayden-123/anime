@@ -1,18 +1,8 @@
 import { authMiddleware } from "@clerk/nextjs";
 import { NextRequest, NextResponse } from "next/server";
-// import { defaultLocale, getLocale, locales } from "./lib/i18n";
-import createMiddleware from "next-intl/middleware";
-
-const intlMiddleware = createMiddleware({
-  locales: ["en", "zh"],
-
-  defaultLocale: "en",
-});
 
 export default authMiddleware({
-
-
-  publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe', '/api/v1/getImages', '/api/v1/getImageDetailed',
+  publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe',
     '/api/v1/getUserInfo'],
 
   afterAuth(auth, req, evt) {

@@ -9,6 +9,7 @@ import { ReactNode } from "react";
 import { getDictionary } from '@/lib/i18n';
 import { Metadata } from 'next';
 import { siteConfig } from '@/lib/site';
+import Link from 'next/link';
 
 export async function generateMetadata({
   params,
@@ -44,7 +45,6 @@ const Layout = async ({
   const dict = await getDictionary(params.lang)
 
   return (
-    
     <div className='flex flex-col h-screen justify-between'>
       <Header lang={params.lang} dict={dict}/>
       <div>
