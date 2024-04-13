@@ -7,6 +7,8 @@ export default authMiddleware({
   publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe',
     '/api/v1/getUserInfo'],
 
+  ignoredRoutes: ['/', 'en', 'zh'],
+
   afterAuth(auth, req, evt) {
 
     const { pathname } = req.nextUrl;
@@ -20,7 +22,9 @@ export default authMiddleware({
     const pathnameHasLocale = locales.some(
       (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
-    if (pathnameHasLocale) return;
+    if (pathnameHasLocale) {
+      return ;
+    }
 
     const locale = getLocale({
       "accept-language": req.headers.get("accept-language"),
