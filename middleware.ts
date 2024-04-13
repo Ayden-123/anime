@@ -12,27 +12,29 @@ export default authMiddleware({
     '/api/v1/getUserInfo'],
 
   afterAuth(auth, req, evt) {
-    const { pathname } = req.nextUrl;
-    if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
-      return;
-    }
-    if (pathname.includes("sign-in") || pathname.includes("sign-up") ) {
-      return;
-    }
+    return;
 
-    const pathnameHasLocale = locales.some(
-      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
-    if (pathnameHasLocale) {
-      return ;
-    }
+    // const { pathname } = req.nextUrl;
+    // if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
+    //   return;
+    // }
+    // if (pathname.includes("sign-in") || pathname.includes("sign-up") ) {
+    //   return;
+    // }
+
+    // const pathnameHasLocale = locales.some(
+    //   (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    // );
+    // if (pathnameHasLocale) {
+    //   return ;
+    // }
 
   //   const locale = getLocale({
   //     "accept-language": req.headers.get("accept-language"),
   //   });
   //   req.nextUrl.pathname = `/${locale}${pathname}`;
 
-    return Response.redirect(req.nextUrl);
+    // return Response.redirect(req.nextUrl);
   },
 });
 
