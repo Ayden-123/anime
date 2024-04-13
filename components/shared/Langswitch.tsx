@@ -20,7 +20,7 @@ const Langswitch = () => {
   const handleSwitchLanguage = (value: string) => {
     if (value !== "lang") {
       const newPathName = pathname.replace(lang, value);
-      router.push(newPathName);
+      router.push('/test/' + newPathName);
     }
   };
 

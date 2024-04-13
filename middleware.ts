@@ -5,15 +5,12 @@ import { getLocale, locales } from "./lib/i18n";
 
 export default authMiddleware({
   publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe',
-    '/api/v1/getUserInfo', '/en', '/zh'],
+    '/api/v1/getUserInfo'],
 
   afterAuth(auth, req, evt) {
 
     const { pathname } = req.nextUrl;
-    
-    const uuid = getUuid()
-    console.log(uuid + 'reqname为' + pathname)
-
+    console.log('aa', pathname)
     if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
       return;
     }
@@ -22,23 +19,21 @@ export default authMiddleware({
     }
 
     const pathnameHasLocale = locales.some(
-      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+      (locale) => pathname.startsWith(`/test/${locale}/`) || pathname === `/test/${locale}`
     );
-    console.log(uuid + 'pathnameHasLocale为' + pathnameHasLocale)
+    console.log('pathnameHasLocale', pathnameHasLocale)
     if (pathnameHasLocale) return;
 
     const locale = getLocale({
       "accept-language": req.headers.get("accept-language"),
     });
-
-    console.log(uuid + 'nextReq为' + `/${locale}${pathname}`)
-    
-    req.nextUrl.pathname = `/${locale}${pathname}`;
+    console.log('hhh')
+    req.nextUrl.pathname = `/test/${locale}${pathname}`;
 
     return Response.redirect(req.nextUrl);
   },
 });
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api)(.*)", "/en"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api)(.*)"],
 };
