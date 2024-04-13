@@ -11,6 +11,9 @@ export default authMiddleware({
     if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
       return;
     }
+    if (pathname.includes("sign-in", "sign-up")) {
+      return;
+    }
 
     const pathnameHasLocale = locales.some(
       (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
