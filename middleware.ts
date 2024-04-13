@@ -4,7 +4,7 @@ import { getLocale, locales } from "./lib/i18n";
 
 export default authMiddleware({
   publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe',
-    '/api/v1/getUserInfo'],
+    '/api/v1/getUserInfo', 'en', 'zh'],
 
   afterAuth(auth, req, evt) {
     const { pathname } = req.nextUrl;
