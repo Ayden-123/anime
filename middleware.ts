@@ -7,7 +7,7 @@ export default authMiddleware({
   publicRoutes: ['/', '/api/webhooks/clerk', '/api/webhooks/stripe',
     '/api/v1/getUserInfo'],
 
-  ignoredRoutes: ['en', 'zh'],
+  // ignoredRoutes: ['en', 'zh'],
 
   afterAuth(auth, req, evt) {
 
