@@ -11,7 +11,7 @@ export default authMiddleware({
     if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
       return;
     }
-    if (pathname.includes("sign-in", "sign-up")) {
+    if (pathname.includes("sign-in") || pathname.includes("sign-up") ) {
       return;
     }
 
