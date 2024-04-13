@@ -19,33 +19,15 @@ const Footer = ({ lang, dict }: { lang: string; dict: any }) => {
             <div className="flex grow flex-row flex-wrap lg:mx-10 lg:flex-nowrap lg:justify-center">
               <div className="mb-5 mr-8 flex max-w-[200px] grow basis-[100px] flex-col space-y-5 lg:mx-10">
                 <div className="font-inter font-medium">INTRODUCTION</div>
-                {/* <a
-                  href="https://openai.com/sora?utm_source=sora.fm"
-                  target="_blank"
-                  className="font-inter font-light text-gray-500"
-                >
-                  What's Sora
-                </a> */}
+                
               </div>
               <div className="mb-5 mr-8 flex max-w-[200px] grow basis-[100px] flex-col space-y-5 lg:mx-10">
                 <div className="font-inter font-medium">FRIENDS</div>
-                {/* <a
-                  href="https://gpts.works?utm_source=sora.fm"
-                  target="_blank"
-                  className="font-inter font-light text-gray-500"
-                >
-                  GPTs Works
-                </a> */}
+                
               </div>
               <div className="mb-5 mr-8 flex max-w-[200px] grow basis-[100px] flex-col space-y-5 lg:mx-10">
                 <div className="font-inter font-medium">CREDIT TO</div>
-                {/* <a
-                  href="https://sora.fm"
-                  target="_blank"
-                  className="font-inter font-light text-gray-500"
-                >
-                  Sora.FM
-                </a> */}
+                
                 
               </div>
             </div>

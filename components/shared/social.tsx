@@ -14,19 +14,12 @@ const Social = ({ lang, dict }: { lang: string; dict: any }) => {
         <BsGithub className="text-lg" />
       </a>
       <a
-        href="https://twitter.com/Ayden990804?utm_source=sora.fm"
+        href="https://twitter.com/Ayden990804"
         target="_blank"
         className="mx-3 flex max-w-[24px] flex-col items-center justify-center"
       >
         <BsTwitterX className="text-lg" />
       </a>
-      {/* <a
-        href="https://www.producthunt.com/posts/sora-ai-video-generator?utm_source=sora.fm"
-        target="_blank"
-        className="mx-3 hidden md:flex max-w-[24px] flex-col items-center justify-center"
-      >
-        <FaProductHunt className="text-lg" />
-      </a> */}
       <a
         href="https://ko-fi.com/ayden123?utm_source=anime-maker.com"
         target="_blank"
