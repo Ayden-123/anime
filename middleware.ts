@@ -10,7 +10,6 @@ export default authMiddleware({
   afterAuth(auth, req, evt) {
 
     const { pathname } = req.nextUrl;
-    console.log('aa', pathname)
     if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
       return;
     }
@@ -19,16 +18,14 @@ export default authMiddleware({
     }
 
     const pathnameHasLocale = locales.some(
-      (locale) => pathname.startsWith(`/test/${locale}/`) || pathname === `/test/${locale}`
+      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );
-    console.log('pathnameHasLocale', pathnameHasLocale)
     if (pathnameHasLocale) return;
 
     const locale = getLocale({
       "accept-language": req.headers.get("accept-language"),
     });
-    console.log('hhh')
-    req.nextUrl.pathname = `/test/${locale}${pathname}`;
+    req.nextUrl.pathname = `/${locale}${pathname}`;
 
     return Response.redirect(req.nextUrl);
   },
