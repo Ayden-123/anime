@@ -11,16 +11,20 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
+  params: { lang }
 }: Readonly<{
   children: React.ReactNode;
+  params: { lang: string };
 }>) {
   return (
     <ClerkProvider appearance={{
       variables: { colorPrimary: '#624cf5' }
     }}>
-      <body className={inter.className}>
-        {children}
-      </body>
+      <html lang={lang}>
+        <body className={inter.className}>
+          {children}
+        </body>
+      </html>
     </ClerkProvider>
 
   );

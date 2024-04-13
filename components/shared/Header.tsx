@@ -4,6 +4,7 @@ import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import Langswitch from './Langswitch'
+import Social from './social'
 
 const Header = ({ lang, dict }: { lang: string; dict: any }) => {
     return (
@@ -15,6 +16,7 @@ const Header = ({ lang, dict }: { lang: string; dict: any }) => {
                     </a>
                 </div>
                 <div className="flex">
+                    <Social lang={lang} dict={dict} />
                     <div className='mr-5'>
                         <Langswitch />
                     </div>
