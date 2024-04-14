@@ -22,6 +22,9 @@ export default function RootLayout({
       variables: { colorPrimary: '#624cf5' }
     }}>
       <html lang={lang}>
+        <head>
+          <link rel="icon" href="/favicon.ico" />
+        </head>
         <GoogleAnalytics />
         <body className={inter.className}>
           {children}
