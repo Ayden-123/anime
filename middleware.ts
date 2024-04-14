@@ -3,39 +3,49 @@ import { NextRequest, NextResponse } from "next/server";
 import { getUuid } from "./lib";
 import { getLocale, locales } from "./lib/i18n";
 
-// export default function middleware(req: NextRequest) {
-  
-// }
+export default function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+  if (pathnameHasLocale) {
+    return ;
+  }
+  req.nextUrl.pathname = `/en${pathname}`;
 
-export default authMiddleware({
-  publicRoutes: ['/', '/api/webhooks/clerk',
-    '/api/v1/getUserInfo'],
+  return Response.redirect(req.nextUrl);
+}
 
-  afterAuth(auth, req, evt) {
+// export default authMiddleware({
+//   publicRoutes: ['/', '/api/webhooks/clerk',
+//     '/api/v1/getUserInfo'],
 
-    const { pathname } = req.nextUrl;
-    if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
-      return;
-    }
-    if (pathname.includes("sign-in") || pathname.includes("sign-up") ) {
-      return;
-    }
+//   afterAuth(auth, req, evt) {
 
-    const pathnameHasLocale = locales.some(
-      (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
-    if (pathnameHasLocale) {
-      return ;
-    }
+//     const { pathname } = req.nextUrl;
+//     if (pathname === "/favicon.ico" || pathname.startsWith("/api/")) {
+//       return;
+//     }
+//     if (pathname.includes("sign-in") || pathname.includes("sign-up") ) {
+//       return;
+//     }
 
-    const locale = getLocale({
-      "accept-language": req.headers.get("accept-language"),
-    });
-    req.nextUrl.pathname = `/${locale}${pathname}`;
+//     const pathnameHasLocale = locales.some(
+//       (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+//     );
+//     if (pathnameHasLocale) {
+//       return ;
+//     }
 
-    return Response.redirect(req.nextUrl);
-  },
-});
+//     // const locale = getLocale({
+//     //   "accept-language": req.headers.get("accept-language"),
+//     // });
+//     // req.nextUrl.pathname = `/${locale}${pathname}`;
+//     req.nextUrl.pathname = `/en${pathname}`;
+
+//     return Response.redirect(req.nextUrl);
+//   },
+// });
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api)(.*)"],
