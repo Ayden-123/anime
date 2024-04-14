@@ -5,6 +5,7 @@ import { auth, clerkClient, ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { getDictionary } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       variables: { colorPrimary: '#624cf5' }
     }}>
       <html lang={lang}>
+        <GoogleAnalytics />
         <body className={inter.className}>
           {children}
         </body>
