@@ -12,8 +12,6 @@ const Page = async ({ params }: { params: { lang: string } }) => {
 
   let images: Image[] = [];
   images = await getImages()
-  // let user: User = {};
-  // user = await 
 
   return (
     <div className="mb-auto">
