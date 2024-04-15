@@ -83,10 +83,10 @@ const GeneratePart = ({ lang, dict }: { lang: string; dict: any }) => {
     }
 
     const submit = async () => {
-         if (!userInfo) {
-            message.error({ content: dict.global.toSignIn, duration: 2000 });
-            return;
-        }
+        //  if (!userInfo) {
+        //     message.error({ content: dict.global.toSignIn, duration: 2000 });
+        //     return;
+        // }
         setImageSrc("")
         setGenerating(true)
         await handler()
